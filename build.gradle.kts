@@ -7,6 +7,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.21")
+}
+
 tasks {
     sourceSets {
         main {

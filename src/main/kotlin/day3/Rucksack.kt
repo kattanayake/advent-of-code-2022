@@ -2,15 +2,9 @@ package day3
 
 import PuzzleSolution
 
-import day1.Calories
-import java.io.File
-
 class Rucksack: PuzzleSolution {
     override fun solveFirst() {
-        var sum = 0
-        File(INPUT).forEachLine {
-            sum += parseRucksack(it)
-        }
+        val sum = readTextByLine(INPUT).map(::parseRucksack).sum()
         println(sum)
     }
 
@@ -22,18 +16,10 @@ class Rucksack: PuzzleSolution {
     }
 
     override fun solveSecond() {
-        var sum = 0
-        var index = 0
-        val rucksacks = mutableListOf<Set<Char>>()
-        File(INPUT).forEachLine {
-            index += 1
-            rucksacks.add(it.toSet())
-            if(index % 3 == 0){
-                val badge = rucksacks[0] intersect rucksacks[1] intersect rucksacks[2]
-                sum += (priority[badge.first()] ?: 0)
-                rucksacks.clear()
-            }
-        }
+        val sum = readTextByLine(INPUT).withIndex().groupBy { it.index /3 }.map { ( _ , rucksacks) ->
+            val badge = rucksacks[0].value.toSet() intersect rucksacks[1].value.toSet() intersect rucksacks[2].value.toSet()
+            (priority[badge.first()] ?: 0)
+        }.sum()
         println(sum)
     }
 

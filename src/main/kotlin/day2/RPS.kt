@@ -2,23 +2,15 @@ package day2
 
 import PuzzleSolution
 
-import java.io.File
-
 class RPS: PuzzleSolution {
 
     override fun solveFirst() {
-        var score = 0
-        File(INPUT).forEachLine {
-            score += parseRound(it)
-        }
+        val score = readTextByLine(INPUT).map(::parseRound).sum()
         println(score)
     }
 
     override fun solveSecond() {
-        var score = 0
-        File(INPUT).forEachLine {
-            score += parseRoundSpecial(it)
-        }
+        val score = readTextByLine(INPUT).map(::parseRoundSpecial).sum()
         println(score)
     }
 

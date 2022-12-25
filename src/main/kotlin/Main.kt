@@ -24,9 +24,11 @@ import day7.NoSpaceLeft
 import day8.TreeHouse
 import day9.RopeBridge
 import java.io.File
+import kotlin.reflect.full.createInstance
 
 fun main(args: Array<String>) {
-   val currentPuzzleSolution: PuzzleSolution = Calories()
+   val problemClass = args.firstOrNull()?.let { dayMap[it] } ?: Calories::class
+   val currentPuzzleSolution: PuzzleSolution = problemClass.createInstance()
    currentPuzzleSolution.solveFirst()
    currentPuzzleSolution.solveSecond()
 }
@@ -41,3 +43,9 @@ interface PuzzleSolution {
       const val ROOT_DIR = "src/main/kotlin/"
    }
 }
+
+private val dayMap = mapOf(
+   "day1" to Calories::class,
+   "day2" to RPS::class,
+   "day3" to Rucksack::class,
+)
