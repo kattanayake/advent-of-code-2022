@@ -1,7 +1,7 @@
 package day17
 
 import PuzzleSolution
-import ROOT_DIR
+
 import util.Coordinate
 import java.io.File
 import java.lang.Integer.max
@@ -249,7 +249,7 @@ class Tetris: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day17/input.txt"
+        const val INPUT = "day17/input.txt"
         const val SIMULATION_ROCK_COUNT = 2022
         const val COLUMN_WIDTH = 7
         const val HEIGHT_OFFSET = 3

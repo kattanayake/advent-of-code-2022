@@ -1,7 +1,7 @@
 package day12
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 import kotlin.math.absoluteValue
 
@@ -190,7 +190,7 @@ class HillClimbing: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day12/input.txt"
+        const val INPUT = "day12/input.txt"
         const val START = 'S'
         const val END = 'E'
         const val RED = "\u001b[31m"

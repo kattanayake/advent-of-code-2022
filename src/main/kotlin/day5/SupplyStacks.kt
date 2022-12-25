@@ -1,7 +1,7 @@
 package day5
 
 import PuzzleSolution
-import ROOT_DIR
+
 import com.sun.org.apache.bcel.internal.generic.Instruction
 import java.io.File
 
@@ -84,7 +84,7 @@ class SupplyStacks: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day5/input.txt"
+        const val INPUT = "day5/input.txt"
         val STACK_BLACK_CHARACTERS = listOf('[', ']', ' ')
     }
 }

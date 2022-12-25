@@ -1,7 +1,7 @@
 package day19
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 import java.lang.Integer.min
 import java.util.Calendar
@@ -118,7 +118,7 @@ class NotEnoughMinerals: PuzzleSolution {
     )
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day19/input.txt"
+        const val INPUT = "day19/input.txt"
         const val MINUTES = 24
     }
 }

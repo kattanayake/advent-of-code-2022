@@ -1,7 +1,7 @@
 package day23
 
 import PuzzleSolution
-import ROOT_DIR
+
 import util.Coordinate
 import java.io.File
 import java.util.*
@@ -87,7 +87,7 @@ class UnstableDiffusion: PuzzleSolution {
     private fun Coordinate.isAllFree(elves: List<Coordinate>) = isNorthFree(elves) and isSouthFree(elves) and isEastFree(elves) and isWestFree(elves)
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day23/input.txt"
+        const val INPUT = "day23/input.txt"
         const val NUM_CYCLES = 10
     }
 }

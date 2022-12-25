@@ -1,7 +1,7 @@
 package day18
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 
 class BoilingBoulders: PuzzleSolution {
@@ -121,7 +121,7 @@ class BoilingBoulders: PuzzleSolution {
     }.toSet()
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day18/input.txt"
+        const val INPUT = "day18/input.txt"
     }
 }
 

@@ -1,7 +1,6 @@
 package day10
 
 import PuzzleSolution
-import ROOT_DIR
 import java.io.File
 
 class CRT :PuzzleSolution {
@@ -69,6 +68,6 @@ class CRT :PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day10/input.txt"
+        const val INPUT = "day10/input.txt"
     }
 }

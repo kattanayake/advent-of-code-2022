@@ -1,7 +1,7 @@
 package day22
 
 import PuzzleSolution
-import ROOT_DIR
+
 import sun.font.GlyphLayout.LayoutEngineFactory
 import java.io.File
 import java.lang.Exception
@@ -390,7 +390,7 @@ class MonkeyMap :PuzzleSolution{
     )
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day22/input.txt"
+        const val INPUT = "day22/input.txt"
         const val GRID_SIZE = 50
 
         /**

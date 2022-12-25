@@ -1,7 +1,7 @@
 package day3
 
 import PuzzleSolution
-import ROOT_DIR
+
 import day1.Calories
 import java.io.File
 
@@ -38,7 +38,7 @@ class Rucksack: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day3/input.txt"
+        const val INPUT = "day3/input.txt"
         val priority = (('a'..'z') + ('A'..'Z')).mapIndexed { index, value -> value to index + 1}.toMap()
     }
 }

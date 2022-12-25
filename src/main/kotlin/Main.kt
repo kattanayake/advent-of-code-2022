@@ -1,3 +1,4 @@
+import day1.Calories
 import day10.CRT
 import day11.MonkeyInTheMiddle
 import day12.HillClimbing
@@ -22,9 +23,10 @@ import day6.TuningTrouble
 import day7.NoSpaceLeft
 import day8.TreeHouse
 import day9.RopeBridge
+import java.io.File
 
-fun main() {
-   val currentPuzzleSolution: PuzzleSolution = FullOfHotAir()
+fun main(args: Array<String>) {
+   val currentPuzzleSolution: PuzzleSolution = Calories()
    currentPuzzleSolution.solveFirst()
    currentPuzzleSolution.solveSecond()
 }
@@ -32,5 +34,10 @@ fun main() {
 interface PuzzleSolution {
    fun solveFirst()
    fun solveSecond()
+
+   fun readText(fileName: String) = File(ROOT_DIR + fileName).readText().trim()
+   fun readTextByLine(filename: String) = readText(filename).split("\n")
+   companion object {
+      const val ROOT_DIR = "src/main/kotlin/"
+   }
 }
-const val ROOT_DIR = "src/main/kotlin/"

@@ -1,7 +1,7 @@
 package day13
 
 import PuzzleSolution
-import ROOT_DIR
+
 import com.sun.xml.internal.ws.api.message.Packet
 import java.io.File
 import java.lang.Exception
@@ -212,6 +212,6 @@ class DistressSignal:PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day13/input.txt"
+        const val INPUT = "day13/input.txt"
     }
 }

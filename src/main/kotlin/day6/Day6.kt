@@ -1,7 +1,7 @@
 package day6
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 
 class TuningTrouble: PuzzleSolution{
@@ -32,7 +32,7 @@ class TuningTrouble: PuzzleSolution{
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day6/input.txt"
+        const val INPUT = "day6/input.txt"
     }
 
 }

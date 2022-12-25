@@ -1,7 +1,7 @@
 package day7
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 import java.nio.file.Files
 import kotlin.properties.Delegates
@@ -109,7 +109,7 @@ class NoSpaceLeft: PuzzleSolution {
         const val ROOT = "/"
         const val PARENT = ".."
         const val DIR = "dir "
-        const val INPUT = "$ROOT_DIR/day7/input.txt"
+        const val INPUT = "day7/input.txt"
         const val TOTAL_SIZE = 70000000
         const val SIZE_REQUIRED = 30000000
     }

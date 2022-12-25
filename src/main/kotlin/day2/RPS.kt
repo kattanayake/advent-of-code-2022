@@ -1,7 +1,7 @@
 package day2
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 
 class RPS: PuzzleSolution {
@@ -82,7 +82,7 @@ class RPS: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day2/input.txt"
+        const val INPUT = "day2/input.txt"
         private val firstPlayKey = mapOf("A" to RPSMove.ROCK, "B" to RPSMove.PAPER, "C" to RPSMove.SCISSORS)
         private val defaultSecondPlayKey = mapOf("X" to RPSMove.ROCK, "Y" to RPSMove.PAPER, "Z" to RPSMove.SCISSORS)
         private val specialSecondPlayKey = mapOf("X" to RPSOutcome.LOSS, "Y" to RPSOutcome.DRAW, "Z" to RPSOutcome.WIN)

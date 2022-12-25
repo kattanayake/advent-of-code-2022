@@ -1,7 +1,7 @@
 package day9
 
 import PuzzleSolution
-import ROOT_DIR
+
 import day9.RopeBridge.DIRECTION.Companion.toDirection
 import java.io.File
 import kotlin.math.absoluteValue
@@ -44,7 +44,7 @@ class RopeBridge: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day9/input.txt"
+        const val INPUT = "day9/input.txt"
     }
 
     private enum class DIRECTION {

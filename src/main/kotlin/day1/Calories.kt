@@ -1,48 +1,25 @@
 package day1
 
 import PuzzleSolution
-import ROOT_DIR
 import java.io.File
-import java.nio.file.Paths
 
-class Calories:PuzzleSolution {
+class Calories: PuzzleSolution {
 
     override fun solveFirst(){
-        var maxCalories = 0
-        var currentCalories = 0
-        println( Paths.get("").toAbsolutePath().toString() )
-        File(INPUT_FILE).forEachLine {
-            if (it.isEmpty()){
-                if (currentCalories > maxCalories) {
-                    maxCalories = currentCalories
-                }
-                currentCalories = 0
-            } else {
-                currentCalories += it.toInt()
-            }
+        val max = readText(INPUT_FILE).split("\n\n").maxOfOrNull { group ->
+            group.split("\n").filter { it.isNotEmpty() }.map { it.toInt() }.fold(0) { acc, i -> acc + i }
         }
-        if (currentCalories > maxCalories) maxCalories = currentCalories
-        println("Maximum calories: $maxCalories")
+        println("Maximum calories: $max")
     }
 
     override fun solveSecond(){
-        val elfCalories = mutableListOf<Int>()
-        var currentCalories = 0
-        File(INPUT_FILE).forEachLine {
-            if (it.isEmpty()){
-                elfCalories.add(currentCalories)
-                currentCalories = 0
-            } else {
-                currentCalories += it.toInt()
-            }
-        }
-        elfCalories.add(currentCalories)
-        elfCalories.sortDescending()
-        val topThree = elfCalories.subList(0,3).sum()
-        print(topThree)
+        val max = readText(INPUT_FILE).split("\n\n").map { group ->
+            group.split("\n").filter { it.isNotEmpty() }.map { it.toInt() }.fold(0) { acc, i -> acc + i }
+        }.sortedDescending().subList(0, 3).fold(0) { acc, i -> acc + i }
+        println("Sum of top three Maximum calories: $max")
     }
 
     companion object {
-        const val INPUT_FILE = "$ROOT_DIR/day1/input.txt"
+        const val INPUT_FILE = "day1/input.txt"
     }
 }

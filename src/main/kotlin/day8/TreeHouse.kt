@@ -1,7 +1,7 @@
 package day8
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 
 class TreeHouse: PuzzleSolution {
@@ -163,6 +163,6 @@ class TreeHouse: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day8/input.txt"
+        const val INPUT = "day8/input.txt"
     }
 }

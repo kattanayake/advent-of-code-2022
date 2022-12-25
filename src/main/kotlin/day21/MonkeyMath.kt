@@ -1,7 +1,7 @@
 package day21
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 import java.lang.Exception
 
@@ -98,6 +98,6 @@ class MonkeyMath: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day21/input.txt"
+        const val INPUT = "day21/input.txt"
     }
 }

@@ -1,7 +1,7 @@
 package day20
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 import kotlin.math.absoluteValue
 
@@ -123,7 +123,7 @@ class GrovePositioningSystem: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day20/input.txt"
+        const val INPUT = "day20/input.txt"
         const val DECRYPTION_KEY = 811589153L
     }
 }

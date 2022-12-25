@@ -1,7 +1,7 @@
 package day16
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 import java.lang.Integer.max
 
@@ -121,7 +121,7 @@ class VolcanoPressure: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day16/input.txt"
+        const val INPUT = "day16/input.txt"
         const val TIME_LIMIT = 30
         const val ELEPHANT_TRAINING_TIME = 4
     }

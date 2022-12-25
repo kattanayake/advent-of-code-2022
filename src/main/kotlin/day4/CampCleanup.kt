@@ -1,7 +1,7 @@
 package day4
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 
 class CampCleanup: PuzzleSolution {
@@ -39,6 +39,6 @@ class CampCleanup: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day4/input.txt"
+        const val INPUT = "day4/input.txt"
     }
 }

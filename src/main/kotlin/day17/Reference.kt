@@ -1,6 +1,6 @@
 package day17
 
-import ROOT_DIR
+
 import java.io.File
 
 data class RockPosition(val x: Int, val y: Int) {
@@ -124,7 +124,7 @@ private fun partTwo(jetPattern: List<Char>): Long {
 }
 
 fun main(){
-    val jetPattern = File("$ROOT_DIR/day17/input.txt").readText().toCharArray().toList()
+    val jetPattern = File("day17/input.txt").readText().toCharArray().toList()
 
     println(partOne(jetPattern))
 //    println(partTwo(jetPattern))

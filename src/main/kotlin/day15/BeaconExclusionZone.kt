@@ -1,7 +1,7 @@
 package day15
 
 import PuzzleSolution
-import ROOT_DIR
+
 import util.Coordinate
 import java.io.File
 import kotlin.math.absoluteValue
@@ -73,7 +73,7 @@ class BeaconExclusionZone: PuzzleSolution {
         }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day15/input.txt"
+        const val INPUT = "day15/input.txt"
         const val ROW_NUM = 2000000
         const val ROW_RANGE_START = 0
         const val ROW_RANGE_END = 4000000

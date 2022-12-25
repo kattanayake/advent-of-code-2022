@@ -1,7 +1,7 @@
 package day14
 
 import PuzzleSolution
-import ROOT_DIR
+
 import util.Coordinate
 import java.io.File
 import java.lang.Integer.min
@@ -155,7 +155,7 @@ class RegolithReservoir: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day14/input.txt"
+        const val INPUT = "day14/input.txt"
     }
 
     /**

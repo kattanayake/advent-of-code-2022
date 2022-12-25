@@ -1,7 +1,7 @@
 package day24
 
 import PuzzleSolution
-import ROOT_DIR
+
 import day24.BlizzardBasin.Tornado.Direction.Companion.toDirection
 import util.Coordinate
 import java.io.File
@@ -170,7 +170,7 @@ class BlizzardBasin: PuzzleSolution {
     }
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day24/input.txt"
+        const val INPUT = "day24/input.txt"
         val START_ORIGINAL = Coordinate(columnIndex = 0, rowIndex = -1)
         val TORNADO_CHARS = listOf('<','^','v','>')
     }

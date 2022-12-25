@@ -1,7 +1,7 @@
 package day11
 
 import PuzzleSolution
-import ROOT_DIR
+
 import java.io.File
 
 class MonkeyInTheMiddle: PuzzleSolution {
@@ -100,7 +100,7 @@ class MonkeyInTheMiddle: PuzzleSolution {
     )
 
     companion object {
-        const val INPUT = "$ROOT_DIR/day11/input.txt"
+        const val INPUT = "day11/input.txt"
         val OPERATION_MAP = mapOf<String, (Long) -> Long>(
             "old * 2" to { x-> x*2 },
             "old * old" to { x-> x*x },

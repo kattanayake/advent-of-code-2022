@@ -1,7 +1,6 @@
 package day25
 
 import PuzzleSolution
-import ROOT_DIR
 import java.io.File
 import kotlin.math.absoluteValue
 import kotlin.math.floor
@@ -61,6 +60,6 @@ class FullOfHotAir: PuzzleSolution {
     }
 
     companion object{
-        const val INPUT = "$ROOT_DIR/day25/input.txt"
+        const val INPUT = "day25/input.txt"
     }
 }
