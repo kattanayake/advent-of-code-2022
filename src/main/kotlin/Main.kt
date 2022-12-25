@@ -14,6 +14,7 @@ import day21.MonkeyMath
 import day22.MonkeyMap
 import day23.UnstableDiffusion
 import day24.BlizzardBasin
+import day25.FullOfHotAir
 import day3.Rucksack
 import day4.CampCleanup
 import day5.SupplyStacks
@@ -23,7 +24,7 @@ import day8.TreeHouse
 import day9.RopeBridge
 
 fun main() {
-   val currentPuzzleSolution: PuzzleSolution = NotEnoughMinerals()
+   val currentPuzzleSolution: PuzzleSolution = FullOfHotAir()
    currentPuzzleSolution.solveFirst()
    currentPuzzleSolution.solveSecond()
 }
