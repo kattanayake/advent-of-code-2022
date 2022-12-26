@@ -17,7 +17,7 @@ class Tetris: PuzzleSolution {
         val target = 1000000000000L
         val nearestRoundNumber = 999999998421L
         val remainder = 1579
-        // ((nearest number - offset before repeating starts)/repeating cycle)*height per cycle + height before repeating starts + offset from nearest round number to actual numer
+        // ((nearest number - offset before repeating starts)/repeating cycle)*height per cycle + height before repeating starts + offset from nearest round number to actual number
         val answer = ((nearestRoundNumber - 291)/1730)*2659 + 459 + 2431
         println(answer)
     }
@@ -118,7 +118,7 @@ class Tetris: PuzzleSolution {
         return -1
     }
 
-    private fun parseInput() = File(INPUT).readText().mapNotNull {
+    private fun parseInput() = readText(INPUT).mapNotNull {
         when(it){
             '>' -> Direction.Right
             '<' -> Direction.Left
@@ -129,8 +129,7 @@ class Tetris: PuzzleSolution {
     sealed class TetrisShape(
         private val blocks: List<List<Boolean>> // Rows first, then columns. true means block, false is air
     ){
-        val height = blocks.size
-        val width = blocks.first().size
+        private val width = blocks.first().size
         object FlatBar: TetrisShape( // ----
             listOf(
                 listOf(true, true, true, true)
@@ -172,36 +171,6 @@ class Tetris: PuzzleSolution {
             direction: Direction,
             coordinate: Coordinate // Bottom left of tetris piece
         ):Boolean{
-//            when(direction){
-//                Direction.Down -> {
-//                    if(coordinate.rowIndex == 0) return false // Already at the bottom, can't go any lower
-//                    val rowBelow = coordinate.rowIndex - 1
-//                    blocks.last().forEachIndexed { index, b ->
-//                        if (b and grid[rowBelow][coordinate.columnIndex+index]) return false
-//                    }
-//                    return true
-//                }
-//                Direction.Left -> {
-//                    if(coordinate.columnIndex == 0) return false // Already at the left edge
-//                    val columnLeft = coordinate.columnIndex - 1
-//                    blocks.reversed().forEachIndexed { index,  row ->
-//                        if(row.first() and grid[coordinate.rowIndex + index][columnLeft]) return false
-//                    }
-//                    return true
-//                }
-//                Direction.Right -> {
-//                    if ((coordinate.columnIndex + width) == COLUMN_WIDTH) {
-//                        return false // Already at right edge
-//                    }
-//                    val columnRight = coordinate.columnIndex + width
-//                    blocks.reversed().forEachIndexed { index, row ->
-//                        if (row.last() and grid[coordinate.rowIndex + index][columnRight]) {
-//                            return false
-//                        }
-//                    }
-//                    return true
-//                }
-//            }
             val newCoordinate = when(direction){
                 Direction.Down -> {
                     if(coordinate.rowIndex == 0) return false // Already at the bottom, can't go any lower

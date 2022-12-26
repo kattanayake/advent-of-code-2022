@@ -217,73 +217,6 @@ class MonkeyMap :PuzzleSolution{
      *      - Down  = 2 Up facing Down
      *      - Left  = 1 Up facing Down
      */
-    /**
-     * Start is where we started, exitDirection is the direction traveling in
-     * Returns Int which is the new zone, and direction which is the side of the new zone we enter on.
-     * The direction of facing is the opposite of this direction
-     */
-    private fun wrapDice(startZone: Int, exitDirection: Direction): Pair<Int, Direction> {
-        return when (startZone) {
-            1 -> {
-                when(exitDirection){
-                    Direction.UP -> 6 to Direction.LEFT
-                    Direction.RIGHT -> 2 to Direction.LEFT
-                    Direction.LEFT -> 4 to Direction.LEFT
-                    Direction.DOWN -> 3 to Direction.UP
-                }
-            }
-            2 -> {
-                when(exitDirection){
-                    Direction.UP -> 6 to Direction.DOWN
-                    Direction.RIGHT -> 5 to Direction.RIGHT
-                    Direction.LEFT -> 1 to Direction.RIGHT
-                    Direction.DOWN -> 3 to Direction.RIGHT
-                }
-            }
-            3 -> {
-                when(exitDirection){
-                    Direction.UP -> 1 to Direction.DOWN
-                    Direction.RIGHT -> 2 to Direction.DOWN
-                    Direction.LEFT -> 4 to Direction.UP
-                    Direction.DOWN -> 5 to Direction.UP
-                }
-            }
-            4 -> {
-                when(exitDirection){
-                    Direction.UP -> 3 to Direction.LEFT
-                    Direction.RIGHT -> 5 to Direction.LEFT
-                    Direction.DOWN -> 6 to Direction.UP
-                    Direction.LEFT -> 1 to Direction.LEFT
-                }
-            }
-            5 -> {
-                when(exitDirection){
-                    Direction.UP -> 3 to Direction.DOWN
-                    Direction.RIGHT -> 2 to Direction.RIGHT
-                    Direction.DOWN -> 6 to Direction.RIGHT
-                    Direction.LEFT -> 4 to Direction.RIGHT
-                }
-            }
-            6 -> {
-                when(exitDirection){
-                    Direction.UP -> 4 to Direction.DOWN
-                    Direction.RIGHT -> 5 to Direction.DOWN
-                    Direction.DOWN -> 2 to Direction.UP
-                    Direction.LEFT -> 1 to Direction.UP
-                }
-            }
-            else -> throw Exception("Unknown argument exception")
-        }
-    }
-
-
-    /**
-     * Grid layout
-     *      1   2
-     *      3
-     *  4   5
-     *  6
-     */
     private fun crossFaces(player: Player): Pair<Pair<Int, Int>, Direction> {
         val currentDiceFace = getDiceFace(player.xCoordinate, player.yCoordinate)
         val (localXCoord, localYCoord) = player.xCoordinate % GRID_SIZE to player.yCoordinate % GRID_SIZE
@@ -438,44 +371,5 @@ class MonkeyMap :PuzzleSolution{
                 Direction.RIGHT to (GRID_SIZE - 1)
             )
         )
-        /**
-         * Grid layout
-         *      1   2
-         *      3
-         *  4   5
-         *  6
-         *
-         *  1 - Away
-         *  3 - Top
-         *  6 - Bottom
-         *  5 - Towards
-         *  4 - Left
-         *  2 - Right
-         *
-         *  1   - Up    = 6 Left facing Right
-         *      - Right = 2 Left facing Right
-         *      - Left  = 4 Left Facing Right
-         *      - Down  = 3 Up Facing Down
-         *  2   - Up    = 6 Down facing Up
-         *      - Right = 5 Right facing Left
-         *      - Left  = 1 Right facing Left
-         *      - Down  = 3 Right facing Left
-         *  3   - Up    = 1 Down facing Up
-         *      - Right = 2 Down Facing Up
-         *      - Down  = 5 Up Facing Down
-         *      - Left  = 4 Up Facing Down
-         *  4   - Up    = 3 Left Facing Right
-         *      - Right = 5 Left Facing Right
-         *      - Down  = 6 Up facing Down
-         *      - Left  = 1 Left facing Right
-         *  5   - Up    = 3 Down facing Up
-         *      - Right = 2 Right Facing Left
-         *      - Down  = 6 Right Facing left
-         *      - Left  = 4 Right Facing left
-         *  6   - Up    = 4 Down facing Up
-         *      - Right = 5 Down facing Up
-         *      - Down  = 2 Up facing Down
-         *      - Left  = 1 Up facing Down
-         */
     }
 }

@@ -43,7 +43,6 @@ class GrovePositioningSystem: PuzzleSolution {
                 destinationNode.nextNode = node
                 node.previousNode = destinationNode
             }
-            if (index % 500 == 0) println("$index/${nodes.size}")
         }
     }
 
@@ -60,38 +59,13 @@ class GrovePositioningSystem: PuzzleSolution {
     }
 
     private fun printList(startNode: LinkedNode){
-//        println("---- List Start ----")
         var nextnode = startNode
         do {
             print("${nextnode.value},")
             nextnode = nextnode.nextNode!!
         } while (nextnode != startNode)
         println()
-//        println("---- List End ----")
     }
-
-    /**
-     * 1 moves between 2 and -3:
-     * 2, 1, -3, 3, -2, 0, 4
-     *
-     * 2 moves between -3 and 3:
-     * 1, -3, 2, 3, -2, 0, 4
-     *
-     * -3 moves between -2 and 0:
-     * 1, 2, 3, -2, -3, 0, 4
-     *
-     * 3 moves between 0 and 4:
-     * 1, 2, -2, -3, 0, 3, 4
-     *
-     * -2 moves between 4 and 1:
-     * 1, 2, -3, 0, 3, 4, -2
-     *
-     * 0 does not move:
-     * 1, 2, -3, 0, 3, 4, -2
-     *
-     * 4 moves between -3 and 0:
-     * 1, 2, -3, 4, 0, 3, -2
-     */
 
     private fun generateLinkedList(): MutableList<LinkedNode> {
         var previousNode : LinkedNode? = null
@@ -108,10 +82,6 @@ class GrovePositioningSystem: PuzzleSolution {
         nodeList.first().previousNode = previousNode
         previousNode?.nextNode = nodeList.first()
         return nodeList
-    }
-
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map {
-        it.toInt()
     }
 
     private data class LinkedNode(

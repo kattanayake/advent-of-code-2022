@@ -14,7 +14,7 @@ class FullOfHotAir: PuzzleSolution {
 
     override fun solveSecond() = Unit
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map { line ->
+    private fun parseInput() = readTextByLine(INPUT).map { line ->
         snafuToDecimal(line)
     }.fold(0.0) { acc, d -> acc + d  }
 

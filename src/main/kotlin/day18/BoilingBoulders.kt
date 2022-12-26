@@ -22,27 +22,7 @@ class BoilingBoulders: PuzzleSolution {
     }
 
     override fun solveSecond() {
-//        val blocks = parseInput()
-//        val minX = blocks.minBy { it.first }.first
-//        val maxX = blocks.maxBy { it.first }.first
-//        val minY = blocks.minBy { it.second }.second
-//        val maxY = blocks.maxBy { it.second }.second
-//        val minZ = blocks.minBy { it.third }.third
-//        val maxZ = blocks.maxBy { it.third }.third
-//
-//        println("Total search space is ${(maxX - minX) * (maxY-minY) * (maxZ - minZ)}")
         val blocks = parseInput()
-//        val totalSurfaceArea = blocks.map {
-//            var freeAdjacentSquares = 0
-//            if (Triple(it.first-1, it.second, it.third) !in blocks) freeAdjacentSquares++
-//            if (Triple(it.first+1, it.second, it.third) !in blocks) freeAdjacentSquares++
-//            if (Triple(it.first, it.second-1, it.third) !in blocks) freeAdjacentSquares++
-//            if (Triple(it.first, it.second+1, it.third) !in blocks) freeAdjacentSquares++
-//            if (Triple(it.first, it.second, it.third-1) !in blocks) freeAdjacentSquares++
-//            if (Triple(it.first, it.second, it.third+1) !in blocks) freeAdjacentSquares++
-//            if (freeAdjacentSquares == 6) println("Shape is not contiguous! $it has no neighbours")
-//            freeAdjacentSquares
-//        }.fold(0) { acc, i ->  acc + i}
 
         val minX = blocks.minBy { it.first }.first
         val maxX = blocks.maxBy { it.first }.first
@@ -51,22 +31,7 @@ class BoilingBoulders: PuzzleSolution {
         val minZ = blocks.minBy { it.third }.third
         val maxZ = blocks.maxBy { it.third }.third
         println("Have to evaluate X from $minX to $maxX, y from $minY to $maxY, Z from $minZ to $maxZ")
-//        val interiorSurfaceArea = (minX..maxX).map { x ->
-//            (minY..maxY).map { y ->
-//                (minZ..maxZ).map { z ->
-//                    val it = ThreeDPoint(x, y, z)
-//                    if ((Triple(it.first-1, it.second, it.third) in blocks) and
-//                    (Triple(it.first+1, it.second, it.third) in blocks) and
-//                    (Triple(it.first, it.second-1, it.third) in blocks) and
-//                    (Triple(it.first, it.second+1, it.third) in blocks) and
-//                    (Triple(it.first, it.second, it.third-1) in blocks) and
-//                    (Triple(it.first, it.second, it.third+1) in blocks)) {
-//                        1
-//                    } else 0
-//                }
-//            }
-//        }.flatten().flatten().fold(0) { acc, i -> acc + i }
-//        println("surfaceArea: ${totalSurfaceArea - interiorSurfaceArea}")
+
         val waterBlocks = mutableSetOf<ThreeDPoint>()
         val bottomLevel = minZ - 1
         ((minX-1)..(maxX + 1)).forEach { x ->
@@ -111,11 +76,11 @@ class BoilingBoulders: PuzzleSolution {
             freeAdjacentSquares
         }.fold(0) { acc, i ->  acc + i}
 
-        println("Water surface area: ${totalSurfaceArea}")
+        println("Water surface area: $totalSurfaceArea")
 
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map {
+    private fun parseInput() = readTextByLine(INPUT).map {
         val (x, y, z) = it.split(",")
         ThreeDPoint(x.toInt(), y.toInt(), z.toInt())
     }.toSet()

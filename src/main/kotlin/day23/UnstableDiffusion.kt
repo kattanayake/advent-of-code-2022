@@ -18,7 +18,7 @@ class UnstableDiffusion: PuzzleSolution {
         simulateElves(parseInput(), numIterations = Int.MAX_VALUE)
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.mapIndexed { rowIndex, line ->
+    private fun parseInput() = readTextByLine(INPUT).mapIndexed { rowIndex, line ->
         line.mapIndexed { columnIndex, c ->
             if (c == '#') Coordinate(rowIndex = rowIndex, columnIndex = columnIndex) else null
         }.filterNotNull()

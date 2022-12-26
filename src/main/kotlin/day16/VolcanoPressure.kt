@@ -24,7 +24,7 @@ class VolcanoPressure: PuzzleSolution {
         if (stepsLeft == 0){
             return 0
         }
-        // Valve is already open when we get here, so pressure from this valve is applicable for rest of time lest
+        // Valve is already open when we get here, so pressure from this valve is applicable for rest of time left
         val pressureFromCurrentNode = node.flowRate*stepsLeft
         val currentCheckpoint = Checkpoint(stepsLeft, valvesLeft, pressureFromCurrentNode)
         val bestPressureFromRest = cache.getOrPut(currentCheckpoint) {
@@ -34,10 +34,8 @@ class VolcanoPressure: PuzzleSolution {
                 ?.maxOf {
                     traverse(graph, graph[it]!!, stepsLeft - node.distanceToNeighbours!![it]!! - 1, valvesLeft - it, isElephant)
                 } ?: 0
-            // What would the elephant get if he started with this starting set? Because we're always start the elephant
-            // after the human, it gets to benefit from the valves opened by the human already. So for the elephant,
-            // [bestPressureFromRest] will include human values, so pressure totals will be it's open valve +
-            // everything the human has done so far.
+            // What would the elephant get if he started with this starting set? IE everything not in the set is opened
+            // by the human
             val elephantBest = if(isElephant) traverse(graph, graph["AA"]!!, TIME_LIMIT- ELEPHANT_TRAINING_TIME, valvesLeft) else 0
             max(humanBest, elephantBest)
         }
@@ -98,7 +96,7 @@ class VolcanoPressure: PuzzleSolution {
         return emptyList()
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map { row ->
+    private fun parseInput() = readTextByLine(INPUT).map { row ->
         val stringParts = row.split(" ")
         Valve(
             name = stringParts[1],

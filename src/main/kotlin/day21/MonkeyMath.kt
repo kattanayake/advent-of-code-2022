@@ -9,13 +9,6 @@ class MonkeyMath: PuzzleSolution {
 
     override fun solveFirst() {
         val monkeys = parseInput()
-//        val parsedMonkeys = ArrayList<MonkeyProblem>()
-//        val unsolvedList = ArrayList<MonkeyProblem>(listOf(monkeys["root"]!!))
-//        while (unsolvedList.isNotEmpty()){
-//            (unsolvedList.removeFirst() as? MonkeyProblem.UnknownMonkeyProblem)?.let { problem ->
-//
-//            }
-//        }
         val answer = naiveRecursiveSolution(monkeys, monkeys["root"]!!)
         println("answer: $answer")
     }
@@ -57,7 +50,7 @@ class MonkeyMath: PuzzleSolution {
         }
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map { line ->
+    private fun parseInput() = readTextByLine(INPUT).map { line ->
         val (name, problemParts) = line.split(":").let { (first, second) ->
             first to second.trim().split(" ")
         }

@@ -81,7 +81,7 @@ class BlizzardBasin: PuzzleSolution {
         repeat(tornadoes.gridWidth){print("#")};print(".#");println()
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.mapIndexed { rowIndex, s ->
+    private fun parseInput() = readTextByLine(INPUT).mapIndexed { rowIndex, s ->
         s.mapIndexed { colIndex, c ->
             if (c in TORNADO_CHARS) Tornado(
                 position = Coordinate(rowIndex = rowIndex-1, columnIndex = colIndex-1),

@@ -46,7 +46,7 @@ class NotEnoughMinerals: PuzzleSolution {
                 if (checkpoint.canBuyGeodeBot()) nextCheckpoints.add(checkpoint.nextTick().buyGeodeBot())
             }
             checkpoints.clear();checkpoints.addAll(nextCheckpoints);nextCheckpoints.clear()
-            // Culling slower ticks
+            // Culling slower checkpoints
             if (checkpoints.size > 1000000){
                 val trimmedCheckpoints = checkpoints.sortedByDescending { it2 -> it2.getSortPriority() }.subList(0, 1000000)
                 checkpoints.clear(); checkpoints.addAll(trimmedCheckpoints)
@@ -55,7 +55,7 @@ class NotEnoughMinerals: PuzzleSolution {
         return checkpoints.maxBy { it.geodeCount }.geodeCount
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.mapIndexed { index, s ->
+    private fun parseInput() = readTextByLine(INPUT).mapIndexed { index, s ->
         val blueprintParts = s.split(":", ".")
         Blueprint(
             number = index + 1,
