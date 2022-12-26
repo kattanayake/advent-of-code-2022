@@ -15,7 +15,7 @@ class BeaconExclusionZone: PuzzleSolution {
             (it.coverage.rowStart <= ROW_NUM) && (it.coverage.rowEnd >= ROW_NUM)
         }
         val itemsInRow = scanResults.map {
-            buildList<Coordinate> {
+            buildList {
                 if(it.sensorLocation.rowIndex == ROW_NUM) add(it.sensorLocation)
                 if(it.beaconLocation.rowIndex == ROW_NUM) add(it.beaconLocation)
             }
@@ -59,7 +59,7 @@ class BeaconExclusionZone: PuzzleSolution {
         }
     }
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map { pair ->
+    private fun parseInput() = readTextByLine(INPUT).map { pair ->
             val (sensor, beacon) = pair.split(":").map {
                 val parts = it.split("=")
                 val x = parts[1].split(",").first().toInt()

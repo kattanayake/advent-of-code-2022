@@ -12,7 +12,7 @@ class RopeBridge: PuzzleSolution {
         val visitedByTail = mutableSetOf<Coordinate>()
         val head = RopeEnd.Head()
         val tail = RopeEnd.Tail()
-        File(INPUT).forEachLine {move ->
+        readTextByLine(INPUT).forEach { move ->
             val (direction, steps) = move.split(" ").let { (first, second)-> first.toDirection() to second.toInt() }
             (1..steps).forEach { _ ->
                 head.moveInDirection(direction)
@@ -27,7 +27,7 @@ class RopeBridge: PuzzleSolution {
         val visitedByTail = mutableSetOf<Coordinate>()
         val head = RopeEnd.Head()
         val tails = (1..9).map { RopeEnd.Tail() }
-        File(INPUT).forEachLine {move ->
+        readTextByLine(INPUT).forEach  {move ->
             val (direction, steps) = move.split(" ").let { (first, second)-> first.toDirection() to second.toInt() }
             (1..steps).forEach { _ ->
                 head.moveInDirection(direction)

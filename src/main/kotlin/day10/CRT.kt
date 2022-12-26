@@ -16,7 +16,7 @@ class CRT :PuzzleSolution {
             }
         }
 
-        File(INPUT).forEachLine {
+        readTextByLine(INPUT).forEach {
             if(it.startsWith("addx")){
                 val (_, value) = it.split(" ")
                 tick += 1
@@ -49,7 +49,7 @@ class CRT :PuzzleSolution {
             if(currentPixel == 39) output.add(mutableListOf())
         }
 
-        File(INPUT).forEachLine {
+        readTextByLine(INPUT).forEach {
             if(it.startsWith("addx")){
                 val (_, value) = it.split(" ")
                 tick += 1

@@ -2,7 +2,6 @@ package day5
 
 import PuzzleSolution
 
-import com.sun.org.apache.bcel.internal.generic.Instruction
 import java.io.File
 
 class SupplyStacks: PuzzleSolution {
@@ -25,15 +24,15 @@ class SupplyStacks: PuzzleSolution {
     private fun parseInput(): Pair<List<MutableList<Char>>, List<Move>>{
         val stacks = (0..8).map { _ -> mutableListOf<Char>() }
         val instructions = mutableListOf<Move>()
-        var parsingMode = PARSING_MODE.STACKS
-        File(INPUT).forEachLine {
+        var parsingMode = ParsingMode.STACKS
+        readTextByLine(INPUT).forEach {
             when(parsingMode){
-                PARSING_MODE.STACKS -> {
+                ParsingMode.STACKS -> {
                     if (it.contains('[')) parseStackInput(stacks, it)
-                    else parsingMode = PARSING_MODE.SKIP
+                    else parsingMode = ParsingMode.SKIP
                 }
-                PARSING_MODE.SKIP -> if (it.isEmpty()) parsingMode = PARSING_MODE.INSTRUCTIONS
-                PARSING_MODE.INSTRUCTIONS -> instructions.add(parseInstruction(it))
+                ParsingMode.SKIP -> if (it.isEmpty()) parsingMode = ParsingMode.INSTRUCTIONS
+                ParsingMode.INSTRUCTIONS -> instructions.add(parseInstruction(it))
             }
         }
         return stacks.map { it.reversed().toMutableList() } to instructions
@@ -77,7 +76,7 @@ class SupplyStacks: PuzzleSolution {
         val endStack: Int
     )
 
-    private enum class PARSING_MODE {
+    private enum class ParsingMode {
         STACKS,
         SKIP,
         INSTRUCTIONS

@@ -96,7 +96,7 @@ class GrovePositioningSystem: PuzzleSolution {
     private fun generateLinkedList(): MutableList<LinkedNode> {
         var previousNode : LinkedNode? = null
         val nodeList = mutableListOf<LinkedNode>()
-        File(INPUT).forEachLine {line ->
+        readTextByLine(INPUT).forEach {line ->
             val newNode = LinkedNode(line.toInt())
             previousNode?.let {
                 it.nextNode = newNode

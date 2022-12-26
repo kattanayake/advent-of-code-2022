@@ -10,15 +10,6 @@ import java.lang.Integer.max
 class DistressSignal:PuzzleSolution {
     override fun solveFirst() {
         val packets = parseInput()
-        val otherPackets = parseInputAlternate()
-
-        packets.forEachIndexed { index, packetPair ->
-            if(packetPair != otherPackets[index]){
-                println("Difference at index $index")
-                println("Ours: $packetPair")
-                println("Theirs: ${otherPackets[index]}")
-            }
-        }
         val inOrderPackets = packets.mapIndexed { index, packetPair ->
             val result = validateLists(packetPair.leftPacket.data, packetPair.rightPacket.data)
             index to result
@@ -39,7 +30,6 @@ class DistressSignal:PuzzleSolution {
         val dividerPacket0 = Packet(PacketData.ListData(mutableListOf(PacketData.ListData(mutableListOf(PacketData.IntegerData(2))))))
         val dividerPacket1 = Packet(PacketData.ListData(mutableListOf(PacketData.ListData(mutableListOf(PacketData.IntegerData(6))))))
         val packets = parseInput().map { listOf(it.leftPacket, it.rightPacket) }.flatten() + listOf(dividerPacket0, dividerPacket1)
-        println(packets.last().data)
         val sorted = packets.sortedWith { p0, p1 -> validateLists(p0.data, p1.data).sortVal }
         val answer = (sorted.indexOf(dividerPacket0) + 1) * (sorted.indexOf(dividerPacket1) + 1)
         println("answer: $answer")
@@ -50,7 +40,7 @@ class DistressSignal:PuzzleSolution {
         var index = 1
         var firstPacket: Packet? = null
         var secondPacket: Packet? = null
-        File(INPUT).forEachLine {
+        readTextByLine(INPUT).forEach {
             if (it.startsWith("[")){
                 if (firstPacket == null) firstPacket = Packet(parseListData(it))
                 else secondPacket = Packet(parseListData(it))
@@ -71,52 +61,6 @@ class DistressSignal:PuzzleSolution {
             rightPacket = secondPacket!!
         ))
         return packetPairs
-    }
-
-    private fun parseInputAlternate(): List<PacketPair> {
-        val input = File(INPUT).readText().split("\n").fold(mutableListOf<MutableList<PacketData>>(mutableListOf())) { acc, line ->
-            if (line.isBlank()) {
-                acc.add(mutableListOf())
-            } else {
-                acc.last().add(parsePacketData(line, 1).first)
-            }
-            acc
-        }.mapIndexed { index, packetData ->
-            PacketPair(
-                index + 1,
-                Packet(packetData[0].toListData()),
-                Packet(packetData[1].toListData())
-            )
-        }
-        return input
-    }
-
-    private fun parsePacketData(line: String, index: Int): Pair<PacketData, Int> {
-        var iterIndex = index
-        val currentPacketData = PacketData.ListData(mutableListOf())
-        var buffer = ""
-        while (line[iterIndex] != ']') {
-            if (line[iterIndex] == ',') {
-                if (buffer.isNotEmpty()) {
-                    currentPacketData.data.add(PacketData.IntegerData(buffer.toInt()))
-                    buffer = ""
-                }
-            }
-            else if (line[iterIndex] == '[') {
-                val (packet, ind) = parsePacketData(line, iterIndex+1)
-                currentPacketData.data.add(packet)
-                iterIndex = ind
-            } else {
-                buffer += line[iterIndex]
-            }
-            iterIndex++
-        }
-
-        if (buffer.isNotEmpty()) {
-            currentPacketData.data.add(PacketData.IntegerData(buffer.toInt()))
-        }
-
-        return currentPacketData to iterIndex
     }
 
     private fun parseListData(data: String): PacketData.ListData {

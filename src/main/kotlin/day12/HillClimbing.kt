@@ -9,9 +9,9 @@ class HillClimbing: PuzzleSolution {
     override fun solveFirst() {
         val (grid, start, end) = parseInput()
         generateNeighbours(grid)
-//        val path = AStar(grid,start,end) {simpleHeuristic(it, end)}
-        val path = dijkstra(grid,start,end)
-        println(path.size)
+        val path = AStar(grid,start,end) {simpleHeuristic(it, end)}
+//        val path = dijkstra(grid,start,end)
+        println(path.size - 1)
 //        visualizePath(grid, path)
     }
 
@@ -20,10 +20,10 @@ class HillClimbing: PuzzleSolution {
         generateNeighbours(grid)
         val startPoints = grid.map { row -> row.filter { it.height == 0 } }.flatten()
         val distances = startPoints.mapIndexed { index, currentStart ->
-            println("${index.inc()}/${startPoints.size}")
+//            println("${index.inc()}/${startPoints.size}")
             grid.reset()
-            dijkstra(grid, currentStart, end).size
-//            AStar(grid,currentStart,end) {simpleHeuristic(it, end)}.size
+//            dijkstra(grid, currentStart, end).size
+            AStar(grid,currentStart,end) {simpleHeuristic(it, end)}.size
         }
         println("Shortest distance: " + (distances.filter { it > 0 }.minOf { it } - 1))
     }
@@ -41,7 +41,7 @@ class HillClimbing: PuzzleSolution {
     private fun parseInput(): Triple<List<List<GridSquare>>, GridSquare, GridSquare> {
         lateinit var start: GridSquare
         lateinit var end: GridSquare
-        val grid = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.mapIndexed { rowIndex, row ->
+        val grid = readTextByLine(INPUT).mapIndexed { rowIndex, row ->
             row.mapIndexed { columnIndex, c ->
                 val square = GridSquare(rowIndex, columnIndex, c.subIfNeeded().code - 'a'.code)
                 if (c == START) start = square

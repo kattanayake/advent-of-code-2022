@@ -17,9 +17,9 @@ class RegolithReservoir: PuzzleSolution {
 
         val grid = SandGrid(rowStart, columnStart, rowEnd, columnEnd)
         addRocks(grid, rockLines)
-        drawGrid(grid)
+//        drawGrid(grid)
         val sandFallen = simulateSandFall(grid)
-        drawGrid(grid)
+//        drawGrid(grid)
         println("sandFallen: ${sandFallen-1}")
     }
 
@@ -33,9 +33,9 @@ class RegolithReservoir: PuzzleSolution {
 
         val grid = SandGrid(5, 199, rowEnd, 801)
         addRocks(grid, rockLines + floor )
-        drawGrid(grid)
+//        drawGrid(grid)
         val sandFallen = simulateSandFall(grid)
-        drawGrid(grid)
+//        drawGrid(grid)
         println("sandFallen: $sandFallen")
     }
 
@@ -65,7 +65,7 @@ class RegolithReservoir: PuzzleSolution {
     private fun SandGrid.canGoTo(currentSandLocation: Coordinate) =
         get(currentSandLocation.rowIndex, currentSandLocation.columnIndex) == GridContent.AIR
 
-    private fun parseInput() = File(INPUT).readText().split("\n").filter { it.isNotEmpty() }.map {
+    private fun parseInput() = readTextByLine(INPUT).map {
         it.split("->").let { lines ->
             (1 until lines.size).map { index ->
                 RockSegment(

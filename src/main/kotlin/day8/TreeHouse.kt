@@ -8,9 +8,8 @@ class TreeHouse: PuzzleSolution {
     override fun solveFirst() {
         val treeGrid = parseInput()
         val initialUnknown = getCountMatchingVisibility(treeGrid, VISIBILITY.UNKNOWN)
-        println("initialUnknown: $initialUnknown")
         bruteForceUpdateVisibility(treeGrid)
-        println("bruteForceUpdateVisibility: ${getCountMatchingVisibility(treeGrid, VISIBILITY.VISIBLE)}")
+        println("Part 1: ${getCountMatchingVisibility(treeGrid, VISIBILITY.VISIBLE)}")
     }
 
     override fun solveSecond() {
@@ -31,7 +30,7 @@ class TreeHouse: PuzzleSolution {
     private fun parseInput(): List<List<Tree>> {
         val grid = mutableListOf<List<Tree>>()
         var rowNum = 0
-        File(INPUT).forEachLine {rowInput ->
+        readTextByLine(INPUT).forEach { rowInput ->
             val row = rowInput.mapIndexed { index, c ->
                 val northVis = if (rowNum == 0) VISIBILITY.VISIBLE else VISIBILITY.UNKNOWN
                 val southVis = if (rowNum == 98) VISIBILITY.VISIBLE else VISIBILITY.UNKNOWN

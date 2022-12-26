@@ -57,7 +57,7 @@ class MonkeyInTheMiddle: PuzzleSolution {
         var test: Int = 0
         var trueDestination: Int = 0
         var falseDestination: Int = 0
-        File(INPUT).forEachLine { line ->
+        readTextByLine(INPUT).forEach { line ->
             val trimmedLine = line.trim()
             if(trimmedLine.startsWith("Monkey")){
                 monkeyNumber+=1

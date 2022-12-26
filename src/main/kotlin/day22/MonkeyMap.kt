@@ -135,7 +135,7 @@ class MonkeyMap :PuzzleSolution{
     private fun parseInput(): Pair<MutableList<MutableList<GridContent>>, List<String>> {
         val grid = mutableListOf<MutableList<GridContent>>()
         lateinit var instructions: List<String>
-        File(INPUT).forEachLine { line ->
+        readTextByLine(INPUT).forEach { line ->
             if (line.isNotEmpty()) {
                 if (line.contains(".")) grid.add(line.map { GridContent.fromChar(it) }.toMutableList())
                 else instructions = line.split(Regex("((?<=[LR])|(?=[LR]))"))

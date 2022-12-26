@@ -20,7 +20,7 @@ class NoSpaceLeft: PuzzleSolution {
     private fun generateDirectoryTree(): Directory{
         val root = Directory("/","/")
         var currentDirectory = root
-        File(INPUT).forEachLine {
+        readTextByLine(INPUT).forEach {
             if(it.startsWith(CD_COMMAND)) { // cd command
                 when (val newDir = it.split(CD_COMMAND)[1]) {
                     ROOT -> currentDirectory = root
@@ -53,11 +53,6 @@ class NoSpaceLeft: PuzzleSolution {
         return root
     }
 
-    private fun initializeSizes(root: Directory) {
-        root.directories.forEach { (s, directory) -> initializeSizes(directory) }
-        root.initializeSize()
-    }
-
     private fun dfs(root: Directory, result: MutableSet<Directory>, condition: (Directory) -> Boolean) {
         root.directories.forEach { (_, directory) ->
             dfs(directory, result, condition)
@@ -73,8 +68,7 @@ class NoSpaceLeft: PuzzleSolution {
             it.size > target
         }
         results.sortedBy { it.size }
-        println("first: ${results.first().name}, ${results.first().size}")
-        println("last: ${results.last().name}, ${results.last().size}")
+        println("Folder: ${results.first().name}, ${results.first().size}")
     }
 
     internal data class Directory(
