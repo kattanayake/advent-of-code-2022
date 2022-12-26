@@ -37,8 +37,8 @@ interface PuzzleSolution {
    fun solveFirst()
    fun solveSecond()
 
-   fun readText(fileName: String) = File(ROOT_DIR + fileName).readText().trim()
-   fun readTextByLine(filename: String) = readText(filename).split("\n")
+   fun readText(fileName: String, trim: Boolean = true) = File(ROOT_DIR + fileName).readText().let { if (trim) it.trim() else it}
+   fun readTextByLine(filename: String, trim: Boolean = true) = readText(filename, trim).split("\n")
    companion object {
       const val ROOT_DIR = "src/main/kotlin/"
    }
